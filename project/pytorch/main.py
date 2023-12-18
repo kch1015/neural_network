@@ -2,7 +2,6 @@ import time
 
 import torch
 from torch.nn import CrossEntropyLoss
-from torch.nn.functional import one_hot
 from torch.optim.adam import Adam
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
@@ -16,7 +15,6 @@ if __name__ == "__main__":
     lr = 0.0002
     epoch = 10
     batch_size = 32
-    label_size = 10
 
     train_data = datasets.MNIST(root="../datasets",
                                 train=True,
@@ -36,7 +34,11 @@ if __name__ == "__main__":
                              batch_size=batch_size,
                              shuffle=False)
 
-    model = NN()
+    input_size = 28 * 28
+    hidden_size = input_size // 2
+    label_size = 10
+
+    model = NN(input_size, hidden_size, label_size)
     criterion = CrossEntropyLoss()
     optimizer = Adam(model.parameters(), lr)
 
@@ -93,10 +95,9 @@ if __name__ == "__main__":
                 _, predicted = torch.max(outputs.data, 1)
                 test_complete += test_y.shape[0]
 
-                answer = one_hot(torch.argmax(test_y, dim=1), label_size)
-                is_correct = torch.unsqueeze(predicted == torch.argmax(test_y, dim=1), 1)
-                test_num += answer.sum(dim=0)
-                test_correct += (is_correct * answer).sum(dim=0)
+                is_correct = torch.unsqueeze(predicted == torch.argmax(test_y, dim=1), dim=1)
+                test_num += test_y.sum(dim=0)
+                test_correct += (is_correct * test_y).sum(dim=0)
 
                 print("\rTest Progress: {:0.5g} %".format(100 * test_complete / test_total), end="")
 
@@ -116,7 +117,7 @@ if __name__ == "__main__":
     plt.legend()
     plt.xlabel('Epoch')
     plt.ylabel('Accuracy')
-    plt.text(0, min(min(test_accuracy_list), min(train_accuracy_list)) + 1,
+    plt.text(1, min(min(test_accuracy_list), min(train_accuracy_list)) + 1,
              "isTorch = True\n" +
              "lr = {0:f}".format(lr))
     plt.show()
