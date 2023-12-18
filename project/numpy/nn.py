@@ -1,3 +1,5 @@
+import numpy as np
+
 from layers import *
 
 
@@ -8,7 +10,7 @@ class NN:
 
         self.affine2 = Affine(hidden_size, output_size)
 
-    def forward(self, x):
+    def __call__(self, x) -> np.ndarray:
         out = self.affine1.forward(x)
         out = self.relu1.forward(out)
 
