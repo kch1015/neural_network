@@ -24,4 +24,9 @@ class Sampler:
             index = self.index[start:min(self.current_idx, self.label.shape[0])]
             return (self.data[index], self.label[index])
         else:
+            self.current_idx = 0
+
+            if self.shuffle:
+                np.random.shuffle(self.index)
+
             raise StopIteration

@@ -10,6 +10,9 @@ class NN:
 
         self.affine2 = Affine(hidden_size, output_size)
 
+    def parameters(self) -> list:
+        return [self.affine1.weight, self.affine1.bias, self.affine2.weight, self.affine2.bias]
+
     def __call__(self, x) -> np.ndarray:
         out = self.affine1.forward(x)
         out = self.relu1.forward(out)
