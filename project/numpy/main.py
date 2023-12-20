@@ -42,6 +42,7 @@ if __name__ == "__main__":
         train_complete = 0
         train_total = train_x.shape[0]
 
+        model.train()
         for i, data in enumerate(train_sampler):
             batch_x, batch_y = data
 
@@ -72,6 +73,7 @@ if __name__ == "__main__":
         test_complete = 0
         test_total = test_x.shape[0]
 
+        model.eval()
         print("Test Progress: {:0.5g} %".format(0.), end="")
         for data in test_sampler:
             batch_x, batch_y = data
