@@ -4,7 +4,7 @@ from .optimizer import _Optimizer
 
 
 class RMSprop(_Optimizer):
-    def __init__(self, params: list, lr: int, weight_decay=0.99):
+    def __init__(self, params: list, lr: float, weight_decay=0.99):
         super().__init__(params, lr)
         self.h = self.h = [np.zeros_like(param) for param in self.params]
         self.weight_decay = weight_decay

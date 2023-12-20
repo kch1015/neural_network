@@ -4,7 +4,7 @@ from .optimizer import _Optimizer
 
 
 class Momentum(_Optimizer):
-    def __init__(self, params:list , lr: int, momentum=0.9):
+    def __init__(self, params:list , lr: float, momentum=0.9):
         super().__init__(params, lr)
         self.v = [np.zeros_like(param) for param in self.params]
         self.momentum = momentum

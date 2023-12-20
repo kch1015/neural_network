@@ -2,7 +2,7 @@ from .optimizer import _Optimizer
 
 
 class SGD(_Optimizer):
-    def __init__(self, params: list, lr: int):
+    def __init__(self, params: list, lr: float):
         super().__init__(params, lr)
 
     def step(self) -> None:

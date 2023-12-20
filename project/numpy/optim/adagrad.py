@@ -4,7 +4,7 @@ from .optimizer import _Optimizer
 
 
 class Adagrad(_Optimizer):
-    def __init__(self, params: list, lr: int):
+    def __init__(self, params: list, lr: float):
         super().__init__(params, lr)
         self.h = [np.zeros_like(param) for param in self.params]
 
