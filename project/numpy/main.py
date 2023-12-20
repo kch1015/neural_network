@@ -12,7 +12,7 @@ from utils.backward import Backward
 
 
 if __name__ == "__main__":
-    lr = 0.0002
+    lr = 0.0001
     epoch = 10
     batch_size = 32
     
@@ -45,8 +45,6 @@ if __name__ == "__main__":
         model.train()
         for i, data in enumerate(train_sampler):
             batch_x, batch_y = data
-
-            optimizer.zero_grad()
 
             hypothesis = model(batch_x)
             cost = criterion(hypothesis, batch_y)

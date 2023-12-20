@@ -6,10 +6,6 @@ class _Optimizer:
         self.lr = lr
         self.params = params
 
-    def zero_grad(self) -> None:
-        for param in self.params:
-            param.grad = None
-
     def step(self) -> None:
         pass
 
