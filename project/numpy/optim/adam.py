@@ -4,7 +4,7 @@ from .optimizer import _Optimizer
 
 
 class Adam(_Optimizer):
-    def __init__(self, params, lr, momentum=(0.9, 0.999)):
+    def __init__(self, params: list, lr: int, momentum=(0.9, 0.999)):
         super().__init__(params, lr)
 
         self.fig1, self.fig2 = momentum
