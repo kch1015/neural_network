@@ -12,7 +12,7 @@ from function import one_hot_encode
 
 
 if __name__ == "__main__":
-    lr = 0.0002
+    lr = 0.0001
     epoch = 10
     batch_size = 32
 
@@ -110,7 +110,7 @@ if __name__ == "__main__":
             print("class {0:d}: {1:.3f} %".format(i, class_accuracy))
 
     end = time.time()
-    print("총 학습 시간 : {}".format(end - start))
+    print("총 학습 시간 : {0:f}".format(end - start))
 
     plt.plot(test_accuracy_list, '-r', label="Test Accuracy")
     plt.plot(train_accuracy_list, '-b', label="Training Accuracy")
@@ -118,6 +118,6 @@ if __name__ == "__main__":
     plt.xlabel('Epoch')
     plt.ylabel('Accuracy')
     plt.text(1, min(min(test_accuracy_list), min(train_accuracy_list)) + 1,
-             "isTorch = True\n" +
+             "Pytorch\n" +
              "lr = {0:f}".format(lr))
     plt.show()

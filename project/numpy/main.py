@@ -35,7 +35,7 @@ if __name__ == "__main__":
     start = time.time()
 
     for epoch in range(epoch):
-        print("[Epoch: {:>4}] {:0.5g} %".format(epoch + 1, 0.), end="")
+        print("[Epoch: {0:>4d}] {1:0.5g} %".format(epoch + 1, 0.), end="")
 
         sum_cost = 0
         train_correct = 0
@@ -59,11 +59,11 @@ if __name__ == "__main__":
             train_complete += batch_y.shape[0]
             train_correct += np.sum(predicted == np.argmax(batch_y, axis=1)).item()
 
-            print("\r[Epoch: {:>4}] {:0.5g} %".format(epoch + 1, 100 * train_complete / train_total), end="")
+            print("\r[Epoch: {0:>4d}] {1:0.5g} %".format(epoch + 1, 100 * train_complete / train_total), end="")
 
         accuracy = 100 * train_correct / train_total
         train_accuracy_list.append(accuracy)
-        print("\r[Epoch: {:>4}] cost = {:>.9}".format(epoch + 1, sum_cost / train_total))
+        print("\r[Epoch: {0:>4d}] cost = {1:>.9f}".format(epoch + 1, sum_cost / train_total))
         print("Train Accuracy: {0:.3f} %".format(accuracy))
 
         test_num = np.zeros(label_size)
@@ -72,7 +72,7 @@ if __name__ == "__main__":
         test_total = test_x.shape[0]
 
         model.eval()
-        print("Test Progress: {:0.5g} %".format(0.), end="")
+        print("Test Progress: {0:0.5g} %".format(0.), end="")
         for data in test_sampler:
             batch_x, batch_y = data
 
@@ -85,7 +85,7 @@ if __name__ == "__main__":
             test_num += np.sum(batch_y, axis=0)
             test_correct += np.sum(is_correct * batch_y, axis=0)
 
-            print("\rTest Progress: {:0.5g} %".format(100 * test_complete / test_total), end="")
+            print("\rTest Progress: {0:0.5g} %".format(100 * test_complete / test_total), end="")
 
         test_accuracy = 100 * np.sum(test_correct) / test_total
         test_accuracy_list.append(test_accuracy)
@@ -96,7 +96,7 @@ if __name__ == "__main__":
             print("class {0:d}: {1:.3f} %".format(i, class_accuracy))
 
     end = time.time()
-    print("총 학습 시간 : {}".format(end - start))
+    print("총 학습 시간 : {0:f}".format(end - start))
 
     plt.plot(test_accuracy_list, '-r', label="Test Accuracy")
     plt.plot(train_accuracy_list, '-b', label="Training Accuracy")
@@ -104,6 +104,6 @@ if __name__ == "__main__":
     plt.xlabel('Epoch')
     plt.ylabel('Accuracy')
     plt.text(1, min(min(test_accuracy_list), min(train_accuracy_list)) + 1,
-             "isTorch = True\n" +
+             "Numpy, adam\n" +
              "lr = {0:f}".format(lr))
     plt.show()

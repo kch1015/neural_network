@@ -8,6 +8,7 @@ class NN(nn.Module):
 
         self.layer1 = nn.Sequential(
             nn.Linear(input_size, hidden_size),
+            nn.BatchNorm1d(hidden_size),
             nn.ReLU()
         )
 
