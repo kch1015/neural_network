@@ -22,7 +22,7 @@ class Sampler:
             start = self.current_idx
             self.current_idx += self.batch_size
             index = self.index[start:min(self.current_idx, self.label.shape[0])]
-            return (self.data[index], self.label[index])
+            return self.data[index], self.label[index]
         else:
             self.current_idx = 0
 
