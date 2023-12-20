@@ -2,7 +2,7 @@ import numpy as np
 
 
 class _Optimizer:
-    def __init__(self, params, lr):
+    def __init__(self, params: list, lr: int):
         self.lr = lr
         self.params = params
 

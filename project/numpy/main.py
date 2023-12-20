@@ -7,7 +7,7 @@ from project.datasets.MNIST.mnist import load_mnist
 from utils.sampler import Sampler
 from nn import NN
 from layers.cross_entropy_loss import CrossEntropyLoss
-from optim import Adam
+from optim import *
 from utils.backward import Backward
 
 
