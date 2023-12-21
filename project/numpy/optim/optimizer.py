@@ -1,4 +1,4 @@
-import numpy as np
+from abc import abstractmethod
 
 
 class _Optimizer:
@@ -6,6 +6,7 @@ class _Optimizer:
         self.lr = lr
         self.params = params
 
+    @abstractmethod
     def step(self) -> None:
         pass
 
