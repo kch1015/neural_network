@@ -3,7 +3,7 @@ import numpy as np
 from project.numpy.utils.parameter import Parameter
 
 
-class BatchNorm():
+class BatchNorm:
     def __init__(self, num_features: int, momentum=0.9) -> None:
         self.num_features = num_features
         self.momentum = momentum
