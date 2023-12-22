@@ -1,7 +1,7 @@
 from .adagrad import Adagrad
 from .adam import Adam
 from .momentum import Momentum
-from .rmsprop import RMSprop
+from .rmsprop import RMSProp
 from .sgd import SGD
 
 del adagrad

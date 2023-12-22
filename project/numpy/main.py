@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from project.datasets.MNIST.mnist import load_mnist
 from utils.sampler import Sampler
 from nn import NN
-from layers.cross_entropy_loss import CrossEntropyLoss
+from layers import CrossEntropyLoss
 from optim import *
 from utils.backward import Backward
 
@@ -27,7 +27,7 @@ def train(model, criterion, optimizer, sampler, cost_list, accuracy_list):
         cost = criterion(hypothesis, batch_y)
 
         backward = Backward(model)
-        backward.backward(criterion.backward())
+        backward(criterion.backward())
 
         optimizer.step()
 
@@ -101,7 +101,7 @@ def show_graph(train_list, test_list, axis_name):
 
 if __name__ == "__main__":
     lr = 0.0001
-    epoch = 10
+    epoch = 2
     batch_size = 32
     
     (train_x, train_y), (test_x, test_y) = load_mnist(one_hot_label=True)
