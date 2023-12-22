@@ -2,17 +2,20 @@ import numpy as np
 
 from project.numpy.utils.parameter import Parameter
 
+
 class Affine:
     def __init__(self, in_features: int, out_features: int, bias=True):
         self.input_size = in_features
         self.output_size = out_features
 
-        self.weight = Parameter(np.sqrt(2 / self.input_size) * np.random.randn(in_features, out_features))
+        self.weight = Parameter(np.sqrt(2.0 / self.input_size) * np.random.randn(in_features, out_features))
+        # self.weight = Parameter(np.random.randn(in_features, out_features))
         # self.weight = Parameter(np.ones((in_features, out_features)))
 
         self.bias = None
         if bias:
-            self.bias = Parameter(np.sqrt(2 / self.input_size) * np.random.randn(1, out_features))
+            self.bias = Parameter(np.sqrt(2.0 / self.input_size) * np.random.randn(1, out_features))
+            # self.bias = Parameter(np.random.randn(1, out_features))
             # self.bias = Parameter(np.ones((1, out_features)))
 
         self.x = None

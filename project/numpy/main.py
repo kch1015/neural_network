@@ -93,7 +93,8 @@ def show_graph(train_list, test_list, axis_name):
     plt.xlabel("Epoch")
     plt.ylabel(axis_name)
     plt.text(0, min(min(train_list), min(test_list)),
-             "Numpy, " + type(optimizer).__name__ + "\n" +
+             "Numpy, {0:s}\n".format(type(optimizer).__name__) +
+             # "He = True, batch_norm = True\n" +
              "hidden_size = {0:d}, lr = {1:f}".format(hidden_size, lr))
     plt.show()
 
