@@ -101,7 +101,7 @@ def show_graph(train_list, test_list, axis_name):
 
 if __name__ == "__main__":
     lr = 0.0001
-    epoch = 2
+    epoch = 10
     batch_size = 32
     
     (train_x, train_y), (test_x, test_y) = load_mnist(one_hot_label=True)
